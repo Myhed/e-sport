@@ -1,5 +1,8 @@
 <div class="container" style="padding:75px">
     {{#each games as |game|}}
-        <img src={{game.jacket}} alt={{game.jacket}} height="230">
+    <div class="h-25 d-inline-block">
+        <img src={{game.jacket}} alt={{game.jacket}} height="230"><br>
+        <a href="/jeux/souscription/{{game.id}}/{{../games.user.id}}" class="btn btn-primary btn-sm w-100">souscrire à {{game.name}}</a>
+    </div>
     {{/each}}
 </div>  

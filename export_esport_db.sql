@@ -78,6 +78,34 @@ LOCK TABLES `login` WRITE;
 INSERT INTO `login` VALUES (1,'benrhouma.myhed@gmail.com','myhed92600','2019-06-02 17:53:24','1','Myhed','admin'),(2,'jyhaddu92@hotmail.fr','jyhad92600','2019-06-02 18:25:17','1','Jyhed',NULL);
 /*!40000 ALTER TABLE `login` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `subscription`
+--
+
+DROP TABLE IF EXISTS `subscription`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `subscription` (
+  `id_subscription` int(11) NOT NULL AUTO_INCREMENT,
+  `id_user` int(11) NOT NULL,
+  `id_game` int(11) NOT NULL,
+  PRIMARY KEY (`id_subscription`),
+  KEY `id_user` (`id_user`),
+  KEY `id_game` (`id_game`),
+  CONSTRAINT `subscription_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `login` (`id`),
+  CONSTRAINT `subscription_ibfk_2` FOREIGN KEY (`id_game`) REFERENCES `games` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `subscription`
+--
+
+LOCK TABLES `subscription` WRITE;
+/*!40000 ALTER TABLE `subscription` DISABLE KEYS */;
+/*!40000 ALTER TABLE `subscription` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -88,4 +116,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-06-02 23:45:58
+-- Dump completed on 2019-06-03  2:32:13
